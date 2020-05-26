@@ -4,14 +4,14 @@ class HomeStackView: UIStackView {
     
     let titleLabel: UILabel = {
        let label = UILabel()
-        label.text = "Memory Cards"
-        return label
+       label.text = "Memory Cards"
+       return label
     }()
     
     let nameField: UITextField = {
        let tF = UITextField()
-        tF.placeholder = "Enter your name"
-        return tF
+       tF.placeholder = "Enter your name"
+       return tF
     }()
     
     let startBtn: UIButton = {

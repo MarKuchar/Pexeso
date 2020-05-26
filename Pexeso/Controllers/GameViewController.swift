@@ -13,4 +13,8 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .darkGray
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
+    }
 }
