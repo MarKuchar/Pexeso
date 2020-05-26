@@ -2,11 +2,8 @@ import UIKit
 
 class HomeStackView: UIStackView {
     
-    
-    
     let titleLabel: UILabel = {
        let label = UILabel()
-//        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Memory Cards"
         return label
     }()
@@ -14,22 +11,21 @@ class HomeStackView: UIStackView {
     let nameField: UITextField = {
        let tF = UITextField()
         tF.placeholder = "Enter your name"
-//        tF.translatesAutoresizingMaskIntoConstraints = false
         return tF
     }()
     
     let startBtn: UIButton = {
         let btn = UIButton(type: .system)
         btn.isUserInteractionEnabled = true
-//        btn.translatesAutoresizingMaskIntoConstraints = false
-//        btn.addTarget(self, action: #selector(delegate?.performSegue(_:)), for: .allEvents)
+        btn.tag = 0
         btn.setTitle("START", for: .normal)
         return btn
     }()
 
     let scoreBtn: UIButton = {
         let btn = UIButton(type: .system)
-//        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.isUserInteractionEnabled = true
+        btn.tag = 1
         btn.setTitle("Scores", for: .normal)
         return btn
     }()
