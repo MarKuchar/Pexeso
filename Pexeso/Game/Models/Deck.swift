@@ -20,6 +20,10 @@ struct Deck {
         Card(kindOfCard: .Card_04, isFlipped: false),
         Card(kindOfCard: .Card_04, isFlipped: false),
         Card(kindOfCard: .Card_05, isFlipped: false),
-        Card(kindOfCard: .Card_05, isFlipped: false)
+        Card(kindOfCard: .Card_05, isFlipped: false),
+        Card(kindOfCard: .Card_06, isFlipped: false),
+        Card(kindOfCard: .Card_06, isFlipped: false),
+        Card(kindOfCard: .Card_07, isFlipped: false),
+        Card(kindOfCard: .Card_07, isFlipped: false),
     ]
 }
