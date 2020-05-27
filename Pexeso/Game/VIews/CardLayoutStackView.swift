@@ -13,7 +13,7 @@ class CardLayoutStackView: UIStackView {
     
     let hStack: UIStackView = {
        let hStack = UIStackView()
-        hStack.axis = .vertical
+        hStack.axis = .horizontal
         hStack.distribution = .equalSpacing
         hStack.spacing = 10
         return hStack
@@ -21,7 +21,7 @@ class CardLayoutStackView: UIStackView {
     
     let hStack1: UIStackView = {
        let hStack = UIStackView()
-        hStack.axis = .vertical
+        hStack.axis = .horizontal
         hStack.distribution = .equalSpacing
         hStack.spacing = 10
         return hStack
@@ -29,7 +29,7 @@ class CardLayoutStackView: UIStackView {
     
     let hStack2: UIStackView = {
        let hStack = UIStackView()
-        hStack.axis = .vertical
+        hStack.axis = .horizontal
         hStack.distribution = .equalSpacing
         hStack.spacing = 10
         return hStack
@@ -37,7 +37,7 @@ class CardLayoutStackView: UIStackView {
     
     let hStack3: UIStackView = {
        let hStack = UIStackView()
-        hStack.axis = .vertical
+        hStack.axis = .horizontal
         hStack.distribution = .equalSpacing
         hStack.spacing = 10
         return hStack
@@ -54,47 +54,49 @@ class CardLayoutStackView: UIStackView {
     
     func setView() {
         arrayOfCards.deck.shuffle()
-        print(arrayOfCards.deck)
         
         for index in 0...3 {
             let image = UIImage(named: arrayOfCards.deck[index].kind.rawValue)
-            let imageView = UIImageView(image: image)
-            imageView.constraintHeight(equalToConstant: 126)
-            imageView.constraintWidth(equalToConstant: 75)
-            hStack.addArrangedSubview(imageView)
+            let btn = UIButton()
+            btn.setImage(image, for: .normal)
+            btn.constraintHeight(equalToConstant: 126)
+            btn.constraintWidth(equalToConstant: 75)
+            hStack.addArrangedSubview(btn)
         }
         
         for index in 4...7 {
             let image = UIImage(named: arrayOfCards.deck[index].kind.rawValue)
-            let imageView = UIImageView(image: image)
-            imageView.constraintHeight(equalToConstant: 126)
-            imageView.constraintWidth(equalToConstant: 75)
-            hStack1.addArrangedSubview(imageView)
+            let btn = UIButton()
+            btn.setImage(image, for: .normal)
+            btn.constraintHeight(equalToConstant: 126)
+            btn.constraintWidth(equalToConstant: 75)
+            hStack1.addArrangedSubview(btn)
         }
         
         for index in 8...11 {
             let image = UIImage(named: arrayOfCards.deck[index].kind.rawValue)
-            let imageView = UIImageView(image: image)
-            imageView.constraintHeight(equalToConstant: 126)
-            imageView.constraintWidth(equalToConstant: 75)
-            hStack2.addArrangedSubview(imageView)
+            let btn = UIButton()
+            btn.setImage(image, for: .normal)
+            btn.constraintHeight(equalToConstant: 126)
+            btn.constraintWidth(equalToConstant: 75)
+            hStack2.addArrangedSubview(btn)
         }
         
         for index in 12...15 {
             let image = UIImage(named: arrayOfCards.deck[index].kind.rawValue)
-            let imageView = UIImageView(image: image)
-            imageView.constraintHeight(equalToConstant: 144)
-            imageView.constraintWidth(equalToConstant: 86)
-            hStack3.addArrangedSubview(imageView)
+            let btn = UIButton()
+            btn.setImage(image, for: .normal)
+            btn.constraintHeight(equalToConstant: 126)
+            btn.constraintWidth(equalToConstant: 75)
+            hStack3.addArrangedSubview(btn)
         }
         
         self.addArrangedSubview(hStack)
         self.addArrangedSubview(hStack1)
         self.addArrangedSubview(hStack2)
-//        self.addArrangedSubview(hStack3)
-        self.axis = .horizontal
+        self.addArrangedSubview(hStack3)
+        self.axis = .vertical
         self.distribution = .equalSpacing
         self.spacing = 10
-        
     }
 }
