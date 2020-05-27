@@ -9,9 +9,14 @@ import UIKit
 
 class GameViewController: UIViewController {
 
+    var cardLayout = CardLayoutStackView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .darkGray
+        view.backgroundColor = .white
+        view.addSubview(cardLayout)
+        
+        cardLayout.centerXYin(view)
     }
     
     override func viewWillAppear(_ animated: Bool) {
