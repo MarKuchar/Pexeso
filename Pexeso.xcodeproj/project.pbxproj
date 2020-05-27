@@ -66,6 +66,63 @@
 			path = Navigations;
 			sourceTree = "<group>";
 		};
+		957039B9247EDCE60037ACDA /* Home  */ = {
+			isa = PBXGroup;
+			children = (
+				957039BC247EDD160037ACDA /* Controllers */,
+				9595B26F247C727500BCC8CD /* Views */,
+			);
+			path = "Home ";
+			sourceTree = "<group>";
+		};
+		957039BA247EDCF30037ACDA /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				957039BD247EDD220037ACDA /* Controllers */,
+				957039BF247EDD400037ACDA /* VIews */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		957039BB247EDCFA0037ACDA /* Scores */ = {
+			isa = PBXGroup;
+			children = (
+				9595B26D247C721600BCC8CD /* Controllers */,
+				957039BE247EDD2E0037ACDA /* Views */,
+			);
+			path = Scores;
+			sourceTree = "<group>";
+		};
+		957039BC247EDD160037ACDA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9595B25C247C714900BCC8CD /* HomeViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		957039BD247EDD220037ACDA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9532E1E3247DA32F0002D149 /* GameViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		957039BE247EDD2E0037ACDA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		957039BF247EDD400037ACDA /* VIews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = VIews;
+			sourceTree = "<group>";
+		};
 		9595B24C247C714900BCC8CD = {
 			isa = PBXGroup;
 			children = (
@@ -85,11 +142,12 @@
 		9595B257247C714900BCC8CD /* Pexeso */ = {
 			isa = PBXGroup;
 			children = (
+				957039BB247EDCFA0037ACDA /* Scores */,
+				957039BA247EDCF30037ACDA /* Game */,
+				957039B9247EDCE60037ACDA /* Home  */,
 				9532E1E9247DA6F80002D149 /* Navigations */,
 				9532E1E0247D92150002D149 /* Utilities  */,
-				9595B26F247C727500BCC8CD /* Views */,
 				9595B26E247C726200BCC8CD /* Models */,
-				9595B26D247C721600BCC8CD /* Controllers */,
 				9595B26C247C716500BCC8CD /* Supporting files */,
 				9595B25E247C714900BCC8CD /* Main.storyboard */,
 				9595B266247C714C00BCC8CD /* Info.plist */,
@@ -111,8 +169,6 @@
 		9595B26D247C721600BCC8CD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9595B25C247C714900BCC8CD /* HomeViewController.swift */,
-				9532E1E3247DA32F0002D149 /* GameViewController.swift */,
 				9532E1E5247DA3630002D149 /* ScoreViewController.swift */,
 			);
 			path = Controllers;
