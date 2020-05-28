@@ -28,17 +28,19 @@ struct AuthResponse: Codable {
 
 
 class ScoreList {
-    let sheetId = "132a8EqBc3gaWjG_WDyomRXUdAgeHabrctqf7Ty1Qcvc"
-    let baseUrl = "https://sheets.googleapis.com/v4/spreadsheets"
-    let refreshToken: String = "1//06R9VVGihX5tVCgYIARAAGAYSNwF-L9IrJ-YXsAksygoKCmwMJIEDkISCOb42IQUwJqDebEAPzp_GA1FOjJSEdgXEluu0bPqHxmU"
-    let clientId = "731733503394-4rutqrq6cfeq1muufnoaqu11c5gd43ot.apps.googleusercontent.com"
-    let clientSecret = "niTDsKIxtO7GUWIXScqVQLRl"
-    let sheetRange = "A2:B10000"
-    private var accessToken = "ya29.a0AfH6SMBCZzhjP8xqBG2JvrWwdHzQG8ymzqsHuvNbO59YmbuDBy1Mq8egD3iJ8k53mjCi61JBywdLXuEoFLhhoCc_60jNWGyJP1wKmIOkEuIrgXwfVlndpUdaAYPiWTL4H3Fqi9P7H3zvx8Nn_xoH2Gu8qSm0Jk9q_ha3"
+    static let instance = ScoreList()
+    private let sheetId = "132a8EqBc3gaWjG_WDyomRXUdAgeHabrctqf7Ty1Qcvc"
+    private let baseUrl = "https://sheets.googleapis.com/v4/spreadsheets"
+    private let refreshToken: String = "1//06R9VVGihX5tVCgYIARAAGAYSNwF-L9IrJ-YXsAksygoKCmwMJIEDkISCOb42IQUwJqDebEAPzp_GA1FOjJSEdgXEluu0bPqHxmU"
+    private let clientId = "731733503394-4rutqrq6cfeq1muufnoaqu11c5gd43ot.apps.googleusercontent.com"
+    private let clientSecret = "niTDsKIxtO7GUWIXScqVQLRl"
+    private let sheetRange = "A2:B10000"
+    private var accessToken = "ya29.a0AfH6SMDyAo0Lb6cjmjhn23YQuYjkHs_jmV7RNzY3JNro0CWSe9OPfomDJy0dmVysBorG3-8OmROh2ZPrls-YZk8DVcNDGkXg7olNheQq_Sh546nPzy3lFrTy2yPgag8N6vm4rr9eoQTtfR1mzrSCVT8U_OEOkY06D7ys"
     private var authorized = false
+    
     public var scores: [Score] = []
     
-    init() {
+    private init() {
         // self.getToken() TODO: store token to device
         self.get()
     }
