@@ -50,8 +50,10 @@ class ScoreList {
         
         let task = URLSession.shared.dataTask(with: request) {(data, response, error) in
             if (error != nil) {
-                // TODO
                 print(error!.localizedDescription)
+            }
+            if !self.handleResponse(response: response) {
+                return
             }
             guard let _data = data else { return }
             self.authorized = true
@@ -96,12 +98,25 @@ class ScoreList {
             if (error != nil) {
                 print(error!.localizedDescription)
             }
+            if !self.handleResponse(response: response) {
+                return
+            }
             guard let _data = data else { return }
             
             let auth = try! JSONDecoder().decode(AuthResponse.self, from: _data)
             self.accessToken = auth.access_token
         }
         task.resume()
+    }
+    
+    private func handleResponse(response: URLResponse?) -> Bool {
+        if let httpResponse = response as? HTTPURLResponse {
+            if httpResponse.statusCode == 200 {
+                return true
+            }
+            print(httpResponse)
+        }
+        return false
     }
     
     private func sortByScore() {
@@ -120,7 +135,7 @@ class ScoreList {
         var request = URLRequest(url: URL(string: endpoint)!)
         request.httpMethod = method
         if (method != "GET") {
-          request.httpBody = try? JSONSerialization.data(withJSONObject: body)
+            request.httpBody = try? JSONSerialization.data(withJSONObject: body)
         }
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
