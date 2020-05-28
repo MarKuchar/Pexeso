@@ -36,28 +36,6 @@ class CardLayoutStackView: UIStackView {
         return hStack
     }()
     
-    let hStack4: UIStackView = {
-       let hStack = UIStackView()
-        hStack.axis = .horizontal
-        hStack.distribution = .equalSpacing
-        return hStack
-    }()
-    
-//    let scoreLabel: UILabel = {
-//       let label = UILabel()
-//        
-//        UIGraphicsBeginImageContext(label.frame.size)
-//        UIImage(named: "Paper_Label")?.draw(in: label.bounds)
-//        if let image = UIGraphicsGetImageFromCurrentImageContext() {
-//            UIGraphicsEndImageContext()
-//            label.backgroundColor = UIColor(patternImage: UIImage(named: "Paper_Label")!)
-//        }
-//        label.text = "SCORE:"
-//        label.constraintWidth(equalToConstant: 100)
-//        label.constraintHeight(equalToConstant: 20)
-//        return label
-//    }()
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         setView()
@@ -71,36 +49,41 @@ class CardLayoutStackView: UIStackView {
         arrayOfCards.deck.shuffle()
         
         for index in 0...3 {
-            let image = UIImage(named: arrayOfCards.deck[index].kind.rawValue)
+            let image = UIImage(named: "Card_0" + String(arrayOfCards.deck[index].kind.rawValue))
             let btn = UIButton()
             btn.setImage(image, for: .normal)
+            btn.isUserInteractionEnabled = true
+            btn.addTarget(self, action: #selector(cardTapped(_:)), for: .allEvents)
             btn.constraintHeight(equalToConstant: 126)
             btn.constraintWidth(equalToConstant: 75)
             hStack.addArrangedSubview(btn)
         }
         
         for index in 4...7 {
-            let image = UIImage(named: arrayOfCards.deck[index].kind.rawValue)
+            let image = UIImage(named: "Card_0" + String(arrayOfCards.deck[index].kind.rawValue))
             let btn = UIButton()
             btn.setImage(image, for: .normal)
+            btn.isUserInteractionEnabled = true
             btn.constraintHeight(equalToConstant: 126)
             btn.constraintWidth(equalToConstant: 75)
             hStack1.addArrangedSubview(btn)
         }
         
         for index in 8...11 {
-            let image = UIImage(named: arrayOfCards.deck[index].kind.rawValue)
+            let image = UIImage(named: "Card_0" + String(arrayOfCards.deck[index].kind.rawValue))
             let btn = UIButton()
             btn.setImage(image, for: .normal)
+            btn.isUserInteractionEnabled = true
             btn.constraintHeight(equalToConstant: 126)
             btn.constraintWidth(equalToConstant: 75)
             hStack2.addArrangedSubview(btn)
         }
         
         for index in 12...15 {
-            let image = UIImage(named: arrayOfCards.deck[index].kind.rawValue)
+            let image = UIImage(named: "Card_0" + String(arrayOfCards.deck[index].kind.rawValue))
             let btn = UIButton()
             btn.setImage(image, for: .normal)
+            btn.isUserInteractionEnabled = true
             btn.constraintHeight(equalToConstant: 126)
             btn.constraintWidth(equalToConstant: 75)
             hStack3.addArrangedSubview(btn)
@@ -114,5 +97,18 @@ class CardLayoutStackView: UIStackView {
         self.axis = .vertical
         self.distribution = .equalSpacing
         self.spacing = 10
+    }
+    
+    @objc func cardTapped(_ sender: UIButton) {
+        switch sender.tag {
+            case 0:
+                print("0")
+            case 1:
+                print("1")
+            case 2:
+                print("2")
+            default:
+                print("3")
+        }
     }
 }

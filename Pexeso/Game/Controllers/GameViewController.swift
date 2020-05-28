@@ -11,23 +11,45 @@ class GameViewController: UIViewController {
 
     let cardLayout = CardLayoutStackView()
     
+    let mistakeLabel: UILabel = {
+       let label = UILabel()
+        label.text = "Mistakes:"
+        label.constraintWidth(equalToConstant: 100)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
     let scoreLabel: UILabel = {
        let label = UILabel()
-        label.text = "XXX"
+        label.text = "Score:"
+        label.constraintWidth(equalToConstant: 100)
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    let mistakeLabel: UILabel = {
-       let label = UILabel()
-        label.text = "XXX"
-        return label
+    let scoreImageView: UIImageView = {
+       let imageView = UIImageView(image: UIImage(named: "Paper_Label"))
+        imageView.constraintHeight(equalToConstant: 60)
+        imageView.constraintWidth(equalToConstant: 150)
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        return imageView
     }()
+    
+    let mistakeImageView: UIImageView = {
+          let imageView = UIImageView(image: UIImage(named: "Paper_Label"))
+           imageView.constraintHeight(equalToConstant: 60)
+           imageView.constraintWidth(equalToConstant: 150)
+           imageView.contentMode = .scaleAspectFit
+           imageView.clipsToBounds = true
+           return imageView
+       }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         UIGraphicsBeginImageContext(self.view.frame.size)
-        UIImage(named: "Table_02")?.draw(in: self.view.bounds)
+        UIImage(named: "Background")?.draw(in: self.view.bounds)
 
         if let image = UIGraphicsGetImageFromCurrentImageContext() {
             UIGraphicsEndImageContext()
@@ -38,15 +60,8 @@ class GameViewController: UIViewController {
          }
 
         view.addSubview(cardLayout)
-        view.addSubview(scoreLabel)
-        view.addSubview(mistakeLabel)
-        
-        scoreLabel.anchors(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor,
-                           trailingAnchor: view.trailingAnchor, bottomAnchor: view.bottomAnchor,
-                           padding: UIEdgeInsets(top: 0, left: 50, bottom: -15, right: 0), size: .zero)
-        
         cardLayout.centerXYin(view)
-        
+        setViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,4 +71,25 @@ class GameViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
     }
+    
+    func setViews() {
+        view.addSubview(scoreImageView)
+        view.addSubview(mistakeImageView)
+        
+        scoreImageView.addSubview(scoreLabel)
+        mistakeImageView.addSubview(mistakeLabel)
+        
+        scoreLabel.centerXYin(scoreImageView)
+        mistakeLabel.centerXYin(mistakeImageView)
+
+        NSLayoutConstraint.activate([
+            scoreImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            scoreImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -70)])
+        
+        NSLayoutConstraint.activate([
+            mistakeImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            mistakeImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -70)])
+    }
+    
+    
 }
