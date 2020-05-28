@@ -43,20 +43,20 @@ class CardLayoutStackView: UIStackView {
         return hStack
     }()
     
-//    let scoreLabel: UILabel = {
-//       let label = UILabel()
-//        
+    let scoreLabel: UILabel = {
+       let label = UILabel()
+        
 //        UIGraphicsBeginImageContext(label.frame.size)
 //        UIImage(named: "Paper_Label")?.draw(in: label.bounds)
 //        if let image = UIGraphicsGetImageFromCurrentImageContext() {
 //            UIGraphicsEndImageContext()
-//            label.backgroundColor = UIColor(patternImage: UIImage(named: "Paper_Label")!)
+            label.backgroundColor = UIColor(patternImage: UIImage(named: "Paper_Label")!)
 //        }
-//        label.text = "SCORE:"
+        label.text = "SCORE:"
 //        label.constraintWidth(equalToConstant: 100)
 //        label.constraintHeight(equalToConstant: 20)
-//        return label
-//    }()
+        return label
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)

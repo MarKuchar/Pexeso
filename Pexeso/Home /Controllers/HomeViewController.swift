@@ -13,7 +13,7 @@ class HomeViewController: UIViewController {
         homeView.startBtn.addTarget(self, action: #selector(performSegue(_:)), for: .touchUpInside)
         homeView.scoreBtn.addTarget(self, action: #selector(performSegue(_:)), for: .touchUpInside)
         
-        scoreList = ScoreList()
+//        scoreList = ScoreList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
