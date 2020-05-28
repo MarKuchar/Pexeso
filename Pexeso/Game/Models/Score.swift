@@ -34,7 +34,7 @@ class ScoreList {
     let clientId = "731733503394-4rutqrq6cfeq1muufnoaqu11c5gd43ot.apps.googleusercontent.com"
     let clientSecret = "niTDsKIxtO7GUWIXScqVQLRl"
     let sheetRange = "A2:B10000"
-    private var accessToken = "ya29.a0AfH6SMBoBcZIBqPwdTkxphyRUgDDCwG8gicejkmn8dMTJZECebKLmyQ95YXG1ZhE_KBqf06KwcGB7kasgoOpUQd7lXB-pRHC6f2l4-ewG69SKQU96zrgW_R8trMYaICtrE1AD6z1qP-6PvUhFq959kRXNqMCKgm1UJnQ"
+    private var accessToken = "ya29.a0AfH6SMBCZzhjP8xqBG2JvrWwdHzQG8ymzqsHuvNbO59YmbuDBy1Mq8egD3iJ8k53mjCi61JBywdLXuEoFLhhoCc_60jNWGyJP1wKmIOkEuIrgXwfVlndpUdaAYPiWTL4H3Fqi9P7H3zvx8Nn_xoH2Gu8qSm0Jk9q_ha3"
     private var authorized = false
     public var scores: [Score] = []
     
@@ -98,7 +98,6 @@ class ScoreList {
             }
             guard let _data = data else { return }
             
-            // JSONデコード
             let auth = try! JSONDecoder().decode(AuthResponse.self, from: _data)
             self.accessToken = auth.access_token
         }
