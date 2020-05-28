@@ -1,10 +1,3 @@
-//
-//  CardLayoutStackView.swift
-//  Pexeso
-//
-//  Created by Martin Kuchar on 2020-05-27.
-//
-
 import UIKit
 
 class CardLayoutStackView: UIStackView {
@@ -42,6 +35,28 @@ class CardLayoutStackView: UIStackView {
         hStack.spacing = 10
         return hStack
     }()
+    
+    let hStack4: UIStackView = {
+       let hStack = UIStackView()
+        hStack.axis = .horizontal
+        hStack.distribution = .equalSpacing
+        return hStack
+    }()
+    
+//    let scoreLabel: UILabel = {
+//       let label = UILabel()
+//        
+//        UIGraphicsBeginImageContext(label.frame.size)
+//        UIImage(named: "Paper_Label")?.draw(in: label.bounds)
+//        if let image = UIGraphicsGetImageFromCurrentImageContext() {
+//            UIGraphicsEndImageContext()
+//            label.backgroundColor = UIColor(patternImage: UIImage(named: "Paper_Label")!)
+//        }
+//        label.text = "SCORE:"
+//        label.constraintWidth(equalToConstant: 100)
+//        label.constraintHeight(equalToConstant: 20)
+//        return label
+//    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -95,6 +110,7 @@ class CardLayoutStackView: UIStackView {
         self.addArrangedSubview(hStack1)
         self.addArrangedSubview(hStack2)
         self.addArrangedSubview(hStack3)
+        
         self.axis = .vertical
         self.distribution = .equalSpacing
         self.spacing = 10

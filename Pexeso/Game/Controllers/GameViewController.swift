@@ -9,7 +9,19 @@ import UIKit
 
 class GameViewController: UIViewController {
 
-    var cardLayout = CardLayoutStackView()
+    let cardLayout = CardLayoutStackView()
+    
+    let scoreLabel: UILabel = {
+       let label = UILabel()
+        label.text = "XXX"
+        return label
+    }()
+    
+    let mistakeLabel: UILabel = {
+       let label = UILabel()
+        label.text = "XXX"
+        return label
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +38,15 @@ class GameViewController: UIViewController {
          }
 
         view.addSubview(cardLayout)
-
+        view.addSubview(scoreLabel)
+        view.addSubview(mistakeLabel)
+        
+        scoreLabel.anchors(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor,
+                           trailingAnchor: view.trailingAnchor, bottomAnchor: view.bottomAnchor,
+                           padding: UIEdgeInsets(top: 0, left: 50, bottom: -15, right: 0), size: .zero)
+        
         cardLayout.centerXYin(view)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
