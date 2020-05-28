@@ -62,7 +62,6 @@ class GameViewController: UIViewController {
         view.addSubview(cardLayout)
         cardLayout.centerXYin(view)
         setViews()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,7 +81,6 @@ class GameViewController: UIViewController {
         
         scoreLabel.centerXYin(scoreImageView)
         mistakeLabel.centerXYin(mistakeImageView)
-        
 
         NSLayoutConstraint.activate([
             scoreImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
@@ -91,7 +89,7 @@ class GameViewController: UIViewController {
         NSLayoutConstraint.activate([
             mistakeImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             mistakeImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -70)])
-        
-        cardLayout.centerXYin(view)
     }
+    
+    
 }
