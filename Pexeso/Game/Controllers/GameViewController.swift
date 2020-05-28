@@ -59,8 +59,9 @@ class GameViewController: UIViewController {
             debugPrint("Image not available")
          }
 
-        setViews()
+        view.addSubview(cardLayout)
         cardLayout.centerXYin(view)
+        setViews()
         
     }
     
@@ -73,7 +74,6 @@ class GameViewController: UIViewController {
     }
     
     func setViews() {
-        view.addSubview(cardLayout)
         view.addSubview(scoreImageView)
         view.addSubview(mistakeImageView)
         
