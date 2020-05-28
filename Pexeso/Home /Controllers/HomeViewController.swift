@@ -1,6 +1,7 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    var scoreList: ScoreList? = nil
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -12,6 +13,7 @@ class HomeViewController: UIViewController {
         homeView.startBtn.addTarget(self, action: #selector(performSegue(_:)), for: .touchUpInside)
         homeView.scoreBtn.addTarget(self, action: #selector(performSegue(_:)), for: .touchUpInside)
         
+        scoreList = ScoreList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
