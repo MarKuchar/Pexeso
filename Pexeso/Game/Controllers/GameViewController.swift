@@ -58,9 +58,10 @@ class GameViewController: UIViewController {
             UIGraphicsEndImageContext()
             debugPrint("Image not available")
          }
-
+        
         view.addSubview(cardLayout)
         cardLayout.centerXYin(view)
+        
         setViews()
     }
     
