@@ -144,9 +144,20 @@ class CardLayoutStackView: UIStackView {
     
     func compareCards() {
         if flippedCards[0].tag == flippedCards[1].tag {
-            flippedCards[0].isHidden = true
-            flippedCards[1].isHidden = true
+// Make an animation both cards to the middle and than disapear
+            UIView.animate(withDuration: 0.5) {
+            // For our information: if you want to hide UI.. in the stackView, instead of using .isHidden = true, we use .alpha = 0
+                self.flippedCards[0].alpha = 0
+                self.flippedCards[1].alpha = 0
+            }
+            
+        } else {
+            UIView.animate(withDuration: 0.5) {
+                self.flippedCards[0].setImage(UIImage(named: "Card_Back"), for: .normal)
+                self.flippedCards[1].setImage(UIImage(named: "Card_Back"), for: .normal)
+            }
         }
+        
         flippedCards.removeAll(keepingCapacity: true)
     }
 }

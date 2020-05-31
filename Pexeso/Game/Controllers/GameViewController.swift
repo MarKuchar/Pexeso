@@ -85,6 +85,9 @@ class GameViewController: UIViewController, FlipCardDelegate {
         
         view.addSubview(cardLayout)
         cardLayout.centerXYin(view)
+        NSLayoutConstraint.activate([
+            cardLayout.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 35),
+            cardLayout.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35)])
         
         setViews()
     }
