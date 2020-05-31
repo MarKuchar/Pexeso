@@ -33,6 +33,19 @@ class ScoreList {
         self.get()
     }
     
+    public func calcScore(name: String, matchCount: Int, mistakeCount: Int, timeRemain: Int) -> Score {
+        var sum = matchCount * 10
+        sum -= sum - (5 * mistakeCount)
+        if timeRemain >= 4000 {
+            sum += 100
+        }
+        if timeRemain >= 4000 {
+            sum += 100
+        }
+        let score = Score(name: name, score: sum)
+        return score
+    }
+    
     public func get() {
         let endpoint = baseUrl + "/" + sheetId + "/values/" + sheetRange
         
