@@ -7,8 +7,32 @@
 
 import UIKit
 
-class GameViewController: UIViewController {
-
+class GameViewController: UIViewController, FlipCardDelegate {
+    
+    @objc func cardTapped(_ sender: UIButton) {
+       switch sender.tag {
+           case 0:
+               sender.setImage(UIImage(named: "Card_00"), for: .normal)
+           case 1:
+               sender.setImage(UIImage(named: "Card_01"), for: .normal)
+           case 2:
+               sender.setImage(UIImage(named: "Card_02"), for: .normal)
+           case 3:
+               sender.setImage(UIImage(named: "Card_03"), for: .normal)
+           case 4:
+               sender.setImage(UIImage(named: "Card_04"), for: .normal)
+           case 5:
+               sender.setImage(UIImage(named: "Card_05"), for: .normal)
+           case 6:
+               sender.setImage(UIImage(named: "Card_06"), for: .normal)
+           case 7:
+               sender.setImage(UIImage(named: "Card_07"), for: .normal)
+           default:
+               sender.setImage(UIImage(named: "Card_08"), for: .normal)
+       }
+    
+    }
+    
     let cardLayout = CardLayoutStackView()
     
     let mistakeLabel: UILabel = {
@@ -61,6 +85,9 @@ class GameViewController: UIViewController {
         
         view.addSubview(cardLayout)
         cardLayout.centerXYin(view)
+        NSLayoutConstraint.activate([
+            cardLayout.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 35),
+            cardLayout.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35)])
         
         setViews()
     }
