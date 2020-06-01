@@ -39,8 +39,8 @@ class ScoreList {
         if timeRemain >= 4000 {
             sum += 100
         }
-        if timeRemain >= 4000 {
-            sum += 100
+        if timeRemain >= 1000 {
+            sum += 50
         }
         let score = Score(name: name, score: sum)
         return score
