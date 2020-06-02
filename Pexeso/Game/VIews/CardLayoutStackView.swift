@@ -109,9 +109,6 @@ class CardLayoutStackView: UIStackView {
     }
     
     @objc func cardTapped(_ sender: UIButton) {
-        if flippedCards.count == 2 {
-            self.flippedCards.removeAll(keepingCapacity: false)
-        }
         switch sender.tag {
         case 0:
             flip(sender, image: "Card_00")
@@ -139,46 +136,43 @@ class CardLayoutStackView: UIStackView {
             flippedCards.append(sender)
         }
         print(arrayOfCards.deck)
-        if (flippedCards.count % 2 == 0 && flippedCards.count != 0) {
+        if ( flippedCards.count >= 2 && flippedCards.count % 2 == 0) {
             compareCards()
         }
     }
     
     func compareCards() {
-        if self.flippedCards[0].tag == self.flippedCards[1].tag {
+        let previous = flippedCards[flippedCards.count - 1]
+        let current = flippedCards[flippedCards.count - 2]
+        if current.tag == previous.tag {
             UIView.animate(withDuration: 2.0, delay: 2.0, options: .transitionFlipFromRight, animations: {
                 // let currentFrame = self.flippedCards[0].layer.presentation()!.frame
-                self.flippedCards[0].superview?.bringSubviewToFront(self.flippedCards[0])
-                self.flippedCards[0].transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-                self.flippedCards[1].transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-                self.flippedCards[1].superview?.bringSubviewToFront(self.flippedCards[0])
+                previous.superview?.bringSubviewToFront(self.flippedCards[0])
+                previous.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+                current.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+                current.superview?.bringSubviewToFront(self.flippedCards[0])
                 
             }, completion: ((Bool) -> Void)? { _ in
                 
                 // For our information: if you want to hide UI.. in the stackView, instead of using .isHidden = true, we use .alpha = 0
                 UIView.animate(withDuration: 2.0, animations: {
-                    self.flippedCards[0].alpha = 0
-                    self.flippedCards[1].alpha = 0
+                    previous.alpha = 0
+                    current.alpha = 0
                 })
                 
                 }
             )
-            if let c = controller {
-                c.game!.match()
-            }
+            controller!.game!.match()
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                self.flip(self.flippedCards[0], image: "Card_Back")
-                self.flip(self.flippedCards[1], image: "Card_Back")
+                self.flip(previous, image: "Card_Back")
+                self.flip(current, image: "Card_Back")
             }
             
-            
-            if let c = controller {
-                c.game!.miss()
-                c.mistakeLabel.text = "Mistakes: " + String(c.game!.missCount)
-            }
+            controller!.game!.miss()
         }
         
+        controller!.updateLabel()
     }
     
     func flip(_ button: UIButton, image: String) {

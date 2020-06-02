@@ -20,6 +20,9 @@ class HomeViewController: UIViewController {
         
         homeView.startBtn.addTarget(self, action: #selector(performSegue(_:)), for: .touchUpInside)
         homeView.scoreBtn.addTarget(self, action: #selector(performSegue(_:)), for: .touchUpInside)
+        
+        // fetch the score list data
+        ScoreList.instance
     }
     
     override func viewWillAppear(_ animated: Bool) {

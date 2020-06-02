@@ -43,6 +43,7 @@ class ScoreList {
             }
             self.client.authorized = true
             self.scores = list
+            self.sortByScore()
         }
         task.resume()
     }
@@ -65,13 +66,13 @@ class ScoreList {
     }
     
     private func sortByScore() {
-        scores.sort { (a, b) in return a.value < b.value }
+        scores.sort { (a, b) in return a.value > b.value }
     }
     
-    private func toArray() -> [Any] {
-        var list : [Any] = []
+    private func toArray() -> [[String]] {
+        var list : [[String]] = []
         for item in scores {
-            list.append([item.name, item.value])
+            list.append([item.name, String(item.value)])
         }
         return list
     }
