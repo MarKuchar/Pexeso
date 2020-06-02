@@ -152,6 +152,7 @@ class CardLayoutStackView: UIStackView {
             self.flippedCards[1].superview?.bringSubviewToFront(self.flippedCards[0])
  
         }, completion: ((Bool) -> Void)? { _ in
+
             // For our information: if you want to hide UI.. in the stackView, instead of using .isHidden = true, we use .alpha = 0
             UIView.animate(withDuration: 2.0, animations: {
                 self.flippedCards[0].alpha = 0
