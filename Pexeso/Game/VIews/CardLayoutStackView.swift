@@ -109,7 +109,7 @@ class CardLayoutStackView: UIStackView {
     @objc func cardTapped(_ sender: UIButton) {
         switch sender.tag {
             case 0:
-//                sender.setImage(UIImage(named: "Card_00"), for: .normal)
+                sender.setImage(UIImage(named: "Card_00"), for: .normal)
                 flippedCards.append(sender)
             case 1:
                 sender.setImage(UIImage(named: "Card_01"), for: .normal)
@@ -143,6 +143,7 @@ class CardLayoutStackView: UIStackView {
     }
     
     func compareCards() {
+        sleep(2)
         if flippedCards[0].tag == flippedCards[1].tag {
 // Make an animation both cards to the middle and than disapear
             UIView.animate(withDuration: 1) {
@@ -151,9 +152,10 @@ class CardLayoutStackView: UIStackView {
                 self.flippedCards[1].alpha = 0
             }
             
-//        } else {
-//            self.flippedCards[0].setImage(UIImage(named: "Card_Back"), for: .normal)
-//            self.flippedCards[1].setImage(UIImage(named: "Card_Back"), for: .normal)
+        } else {
+            
+            self.flippedCards[0].setImage(UIImage(named: "Card_Back"), for: .normal)
+            self.flippedCards[1].setImage(UIImage(named: "Card_Back"), for: .normal)
         }
         flippedCards.removeAll(keepingCapacity: true)
     }
