@@ -238,7 +238,7 @@ class GameViewController: UIViewController, FlipCardDelegate {
                         NSLayoutConstraint.deactivate([
                             self.notificationWidthConstraint])
                         NSLayoutConstraint.activate([
-                            self.notificationImageView.widthAnchor.constraint(equalToConstant: 350)])
+                            self.notificationImageView.widthAnchor.constraint(equalToConstant: 360)])
                             self.notificationLabel.text = "Total score: \(self.game!.value)"
                     })
                 })
