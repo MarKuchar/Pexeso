@@ -1,11 +1,20 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    var name: String = ""
+    var scoreList: ScoreList? = nil
+        
+    let homeView = HomeStackView()
+    let userName : String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        let homeView = HomeStackView()
+        
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+               backgroundImage.image = UIImage(named: "Table_01.jpg")
+               backgroundImage.autoresizingMask = [UIView.AutoresizingMask.flexibleBottomMargin, UIView.AutoresizingMask.flexibleHeight, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin]
+        backgroundImage.contentMode = UIView.ContentMode.scaleToFill
+               self.view.insertSubview(backgroundImage, at: 0)
+
         view.addSubview(homeView)
         homeView.centerXYin(view)
         
@@ -21,8 +30,14 @@ class HomeViewController: UIViewController {
         switch sender.tag {
             case 0:
                 let gameController = GameViewController()
-                gameController.game = Game(name: name)
+                gameController.game = Game(name: userName)
+                guard let userName = homeView.nameField.text, userName != "" else {
+                        print("Name is empty")
+                        return
+                }
                 self.navigationController?.pushViewController(gameController, animated: true)
+        
+                
             default:
                 let scoreController = ScoreViewController()
                 let navController = CustomNavigationController(rootViewController: scoreController)

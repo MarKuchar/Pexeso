@@ -34,7 +34,7 @@ class Game {
     }
     
     private func calcScore() {
-        let num = matchCount * 10 - missCount * 5
+        let num = matchCount * 10 - missCount * 2
         if (num < 0) {
             value = 0
             return
