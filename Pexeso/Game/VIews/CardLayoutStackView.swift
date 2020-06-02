@@ -107,33 +107,33 @@ class CardLayoutStackView: UIStackView {
     }
 
     @objc func cardTapped(_ sender: UIButton) {
+        if flippedCards.count == 2 {
+            self.flippedCards.removeAll(keepingCapacity: false)
+        }
         switch sender.tag {
             case 0:
-                sender.setImage(UIImage(named: "Card_00"), for: .normal)
+                flip(sender, image: "Card_00")
                 flippedCards.append(sender)
             case 1:
-                sender.setImage(UIImage(named: "Card_01"), for: .normal)
+                flip(sender, image: "Card_01")
                 flippedCards.append(sender)
             case 2:
-                sender.setImage(UIImage(named: "Card_02"), for: .normal)
+                flip(sender, image: "Card_02")
                 flippedCards.append(sender)
             case 3:
-                sender.setImage(UIImage(named: "Card_03"), for: .normal)
+                flip(sender, image: "Card_03")
                 flippedCards.append(sender)
             case 4:
-                sender.setImage(UIImage(named: "Card_04"), for: .normal)
+                flip(sender, image: "Card_04")
                 flippedCards.append(sender)
             case 5:
-                sender.setImage(UIImage(named: "Card_05"), for: .normal)
+                flip(sender, image: "Card_05")
                 flippedCards.append(sender)
             case 6:
-                sender.setImage(UIImage(named: "Card_06"), for: .normal)
-                flippedCards.append(sender)
-            case 7:
-                sender.setImage(UIImage(named: "Card_07"), for: .normal)
+                flip(sender, image: "Card_06")
                 flippedCards.append(sender)
             default:
-                sender.setImage(UIImage(named: "Card_08"), for: .normal)
+                flip(sender, image: "Card_07")
                 flippedCards.append(sender)
             }
         print(arrayOfCards.deck)
@@ -143,20 +143,34 @@ class CardLayoutStackView: UIStackView {
     }
     
     func compareCards() {
-        sleep(2)
-        if flippedCards[0].tag == flippedCards[1].tag {
-// Make an animation both cards to the middle and than disapear
-            UIView.animate(withDuration: 1) {
+        if self.flippedCards[0].tag == self.flippedCards[1].tag {
+        UIView.animate(withDuration: 2.0, delay: 2.0, options: .transitionFlipFromRight, animations: {
+//                let currentFrame = self.flippedCards[0].layer.presentation()!.frame
+            self.flippedCards[0].superview?.bringSubviewToFront(self.flippedCards[0])
+            self.flippedCards[0].transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+            self.flippedCards[1].transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+            self.flippedCards[1].superview?.bringSubviewToFront(self.flippedCards[0])
+ 
+        }, completion: ((Bool) -> Void)? { _ in
+
             // For our information: if you want to hide UI.. in the stackView, instead of using .isHidden = true, we use .alpha = 0
+            UIView.animate(withDuration: 2.0, animations: {
                 self.flippedCards[0].alpha = 0
                 self.flippedCards[1].alpha = 0
-            }
-            
+            })
+        });
         } else {
-            
-            self.flippedCards[0].setImage(UIImage(named: "Card_Back"), for: .normal)
-            self.flippedCards[1].setImage(UIImage(named: "Card_Back"), for: .normal)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                self.flip(self.flippedCards[0], image: "Card_Back")
+                self.flip(self.flippedCards[1], image: "Card_Back")
+            }
         }
-        flippedCards.removeAll(keepingCapacity: true)
+    }
+    
+    func flip(_ button: UIButton, image: String) {
+        let transitionOptions: UIView.AnimationOptions = [.transitionFlipFromRight, .showHideTransitionViews]
+        UIView.transition(with: button, duration: 1.0, options: transitionOptions, animations: {
+          button.setImage(UIImage(named: image), for: .normal)
+        })
     }
 }
