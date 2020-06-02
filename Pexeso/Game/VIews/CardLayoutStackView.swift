@@ -132,9 +132,6 @@ class CardLayoutStackView: UIStackView {
             case 6:
                 flip(sender, image: "Card_06")
                 flippedCards.append(sender)
-            case 7:
-                flip(sender, image: "Card_06")
-                flippedCards.append(sender)
             default:
                 flip(sender, image: "Card_07")
                 flippedCards.append(sender)
@@ -146,20 +143,27 @@ class CardLayoutStackView: UIStackView {
     }
     
     func compareCards() {
-// Make an animation both cards to the middle and than disapear
-        UIView.animate(withDuration: 3.0, delay: 0.0, options: .transitionFlipFromRight, animations: {
-            if self.flippedCards[0].tag == self.flippedCards[1].tag {
-                // For our information: if you want to hide UI.. in the stackView, instead of using .isHidden = true, we use .alpha = 0
+        if self.flippedCards[0].tag == self.flippedCards[1].tag {
+        UIView.animate(withDuration: 2.0, delay: 2.0, options: .transitionFlipFromRight, animations: {
+//                let currentFrame = self.flippedCards[0].layer.presentation()!.frame
+            self.flippedCards[0].superview?.bringSubviewToFront(self.flippedCards[0])
+            self.flippedCards[0].transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+            self.flippedCards[1].transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+            self.flippedCards[1].superview?.bringSubviewToFront(self.flippedCards[0])
+ 
+        }, completion: ((Bool) -> Void)? { _ in
+            // For our information: if you want to hide UI.. in the stackView, instead of using .isHidden = true, we use .alpha = 0
+            UIView.animate(withDuration: 2.0, animations: {
                 self.flippedCards[0].alpha = 0
                 self.flippedCards[1].alpha = 0
-            } else {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    self.flip(self.flippedCards[0], image: "Card_Back")
-                    self.flip(self.flippedCards[1], image: "Card_Back")
-                }
-            }
-        }, completion: ((Bool) -> Void)? { _ in
+            })
         });
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                self.flip(self.flippedCards[0], image: "Card_Back")
+                self.flip(self.flippedCards[1], image: "Card_Back")
+            }
+        }
     }
     
     func flip(_ button: UIButton, image: String) {
