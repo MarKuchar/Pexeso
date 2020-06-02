@@ -34,7 +34,6 @@ class GameViewController: UIViewController {
     
     let mistakeLabel: UILabel = {
         let label = UILabel()
-        label.text = "Mistakes: 0"
         label.constraintWidth(equalToConstant: 100)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "Luminari-Regular", size: 15)
@@ -111,6 +110,11 @@ class GameViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = true
         homeController.homeView.nameField.text = userName
         
+        // init label
+        scoreLabel.text = "Score: " + String(game!.matchCount)
+        mistakeLabel.text = "Mistakes: " + String(game!.missCount)
+        game!.cardCount = cardLayout.arrayOfCards.deck.count
+        
         //        timer
         if !isTimerRunning{
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
@@ -146,10 +150,24 @@ class GameViewController: UIViewController {
             timerImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 70)])
     }
     
+    func updateLabel() {
+        scoreLabel.text = "Score: " + String(game!.value)
+        mistakeLabel.text = "Mistakes: " + String(game!.missCount)
+    }
+    
     @objc func runTimer(){
+        if (game!.isFinished()) {
+            game?.finish()
+            updateLabel()
+            isTimerRunning = false
+            timer.invalidate()
+            return
+        }
         counter += 1
         seconds = counter % 60
         minutes = counter / 60
+        
+        game!.setRemain(time: counter)
         timeText = String(format: "%02d:%02d", minutes, seconds)
         timerLabel.text = "\(userName)\(timeText)"
     }
