@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84110BE1248637170042A617 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84110BE0248637170042A617 /* Game.swift */; };
+		84110BE3248638F40042A617 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84110BE2248638F40042A617 /* Score.swift */; };
 		849B3333247FBF89005F8BB7 /* ScoreList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849B3332247FBF89005F8BB7 /* ScoreList.swift */; };
 		849B333524804589005F8BB7 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849B333424804589005F8BB7 /* Auth.swift */; };
 		9532E1DF247D8E220002D149 /* HomeStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9532E1DE247D8E220002D149 /* HomeStackView.swift */; };
@@ -28,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		84110BE0248637170042A617 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		84110BE2248638F40042A617 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		849B3332247FBF89005F8BB7 /* ScoreList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreList.swift; sourceTree = "<group>"; };
 		849B333424804589005F8BB7 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		9532E1DE247D8E220002D149 /* HomeStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStackView.swift; sourceTree = "<group>"; };
@@ -193,6 +197,8 @@
 			children = (
 				957039C3247EE2E10037ACDA /* Card.swift */,
 				957039C5247EECA40037ACDA /* Deck.swift */,
+				84110BE0248637170042A617 /* Game.swift */,
+				84110BE2248638F40042A617 /* Score.swift */,
 				849B3332247FBF89005F8BB7 /* ScoreList.swift */,
 				849B333424804589005F8BB7 /* Auth.swift */,
 			);
@@ -288,6 +294,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				957039C6247EECA40037ACDA /* Deck.swift in Sources */,
+				84110BE1248637170042A617 /* Game.swift in Sources */,
+				84110BE3248638F40042A617 /* Score.swift in Sources */,
 				957039C8247EEDBB0037ACDA /* CardLayoutStackView.swift in Sources */,
 				9532E1E6247DA3630002D149 /* ScoreViewController.swift in Sources */,
 				9532E1DF247D8E220002D149 /* HomeStackView.swift in Sources */,

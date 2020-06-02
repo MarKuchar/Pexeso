@@ -20,8 +20,6 @@ class HomeViewController: UIViewController {
         
         homeView.startBtn.addTarget(self, action: #selector(performSegue(_:)), for: .touchUpInside)
         homeView.scoreBtn.addTarget(self, action: #selector(performSegue(_:)), for: .touchUpInside)
-        
-        scoreList = ScoreList.instance
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,8 +30,8 @@ class HomeViewController: UIViewController {
         switch sender.tag {
             case 0:
                 let gameController = GameViewController()
-                
-                    guard let userName = homeView.nameField.text, userName != "" else {
+                gameController.game = Game(name: userName)
+                guard let userName = homeView.nameField.text, userName != "" else {
                         print("Name is empty")
                         return
                 }
@@ -43,7 +41,6 @@ class HomeViewController: UIViewController {
             default:
                 let scoreController = ScoreViewController()
                 let navController = CustomNavigationController(rootViewController: scoreController)
-                navController.navigationItem.title = "Scores"             
                 present(navController, animated: true, completion: nil)
         }
     }

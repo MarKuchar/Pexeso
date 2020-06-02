@@ -8,17 +8,6 @@
 
 import Foundation
 
-struct Score: Codable {
-    let name: String
-    let score: Int
-}
-
-struct ScoreResponse: Codable {
-    let range: String
-    let majorDimension: String
-    let values: [[String]]
-}
-
 class ScoreList {
     static let instance = ScoreList()
     private let client = ApiClient.instance
@@ -31,19 +20,6 @@ class ScoreList {
     
     private init() {
         self.get()
-    }
-    
-    public func calcScore(name: String, matchCount: Int, mistakeCount: Int, timeRemain: Int) -> Score {
-        var sum = matchCount * 10
-        sum -= sum - (5 * mistakeCount)
-        if timeRemain >= 4000 {
-            sum += 100
-        }
-        if timeRemain >= 1000 {
-            sum += 50
-        }
-        let score = Score(name: name, score: sum)
-        return score
     }
     
     public func get() {
@@ -63,7 +39,7 @@ class ScoreList {
             let scoreResponse = try! JSONDecoder().decode(ScoreResponse.self, from: _data)
             var list: [Score] = []
             for row in scoreResponse.values {
-                list.append(Score(name: row[0], score: Int(row[1]) ?? 0))
+                list.append(Score(name: row[0], value: Int(row[1]) ?? 0))
             }
             self.client.authorized = true
             self.scores = list
@@ -89,13 +65,13 @@ class ScoreList {
     }
     
     private func sortByScore() {
-        scores.sort { (a, b) in return a.score < b.score }
+        scores.sort { (a, b) in return a.value < b.value }
     }
     
     private func toArray() -> [Any] {
         var list : [Any] = []
         for item in scores {
-            list.append([item.name, item.score])
+            list.append([item.name, item.value])
         }
         return list
     }

@@ -60,7 +60,7 @@ class ScoreViewController: UITableViewController {
         
         let row = self.list[indexPath.row]
         
-        cell.textLabel?.text =  String(indexPath.row + 1) + ".  " + row.name + " " + String(row.score)
+        cell.textLabel?.text =  String(indexPath.row + 1) + ".  " + row.name + " " + String(row.value)
         cell.textLabel?.textAlignment = .center
         cell.textLabel?.font = UIFont(name: "Luminari-Regular", size: 20.0)!
         cell.backgroundColor = UIColor(named: "transparent")
