@@ -1,7 +1,7 @@
 import UIKit
 
 protocol FlipCardDelegate: class {
-    func cardTapped(_ sender: UIButton)
+    func notification(_ type: String)
 }
 
 class CardLayoutStackView: UIStackView {
@@ -146,14 +146,12 @@ class CardLayoutStackView: UIStackView {
         let current = flippedCards[flippedCards.count - 2]
         if current.tag == previous.tag {
             UIView.animate(withDuration: 2.0, delay: 2.0, options: .transitionFlipFromRight, animations: {
-                // let currentFrame = self.flippedCards[0].layer.presentation()!.frame
                 previous.superview?.bringSubviewToFront(self.flippedCards[0])
                 previous.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
                 current.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
                 current.superview?.bringSubviewToFront(self.flippedCards[0])
                 
             }, completion: ((Bool) -> Void)? { _ in
-                
                 // For our information: if you want to hide UI.. in the stackView, instead of using .isHidden = true, we use .alpha = 0
                 UIView.animate(withDuration: 2.0, animations: {
                     previous.alpha = 0
@@ -163,15 +161,19 @@ class CardLayoutStackView: UIStackView {
                 }
             )
             controller!.game!.match()
+            if flippedCards.count == 16 {
+                delegate?.notification("Victory")
+            } else {
+             delegate?.notification("Match")
+            }
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self.flip(previous, image: "Card_Back")
                 self.flip(current, image: "Card_Back")
             }
-            
             controller!.game!.miss()
+            delegate?.notification("Miss")
         }
-        
         controller!.updateLabel()
     }
     
