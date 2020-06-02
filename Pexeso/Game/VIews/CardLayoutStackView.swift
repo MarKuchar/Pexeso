@@ -161,7 +161,7 @@ class CardLayoutStackView: UIStackView {
                 }
             )
             controller!.game!.match()
-            if flippedCards.count == 16 {
+            if controller!.game!.isFinished() {
                 delegate?.notification("Victory")
             } else {
              delegate?.notification("Match")
