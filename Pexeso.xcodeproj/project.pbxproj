@@ -24,6 +24,7 @@
 		9595B260247C714900BCC8CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9595B25E247C714900BCC8CD /* Main.storyboard */; };
 		9595B262247C714C00BCC8CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9595B261247C714C00BCC8CD /* Assets.xcassets */; };
 		9595B265247C714C00BCC8CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9595B263247C714C00BCC8CD /* LaunchScreen.storyboard */; };
+		FDCD18D4248573050039CA8C /* Luminari-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FDCD18D3248573050039CA8C /* Luminari-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		9595B261247C714C00BCC8CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9595B264247C714C00BCC8CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9595B266247C714C00BCC8CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FDCD18D3248573050039CA8C /* Luminari-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Luminari-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 		9595B257247C714900BCC8CD /* Pexeso */ = {
 			isa = PBXGroup;
 			children = (
+				FDCD18D2248572D70039CA8C /* Font */,
 				957039BB247EDCFA0037ACDA /* Scores */,
 				957039BA247EDCF30037ACDA /* Game */,
 				957039B9247EDCE60037ACDA /* Home  */,
@@ -202,6 +205,14 @@
 				9532E1DE247D8E220002D149 /* HomeStackView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FDCD18D2248572D70039CA8C /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				FDCD18D3248573050039CA8C /* Luminari-Regular.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +273,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDCD18D4248573050039CA8C /* Luminari-Regular.ttf in Resources */,
 				9595B265247C714C00BCC8CD /* LaunchScreen.storyboard in Resources */,
 				9595B262247C714C00BCC8CD /* Assets.xcassets in Resources */,
 				9595B260247C714900BCC8CD /* Main.storyboard in Resources */,

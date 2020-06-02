@@ -3,15 +3,18 @@ import UIKit
 class HomeStackView: UIStackView {
     
     let titleLabel: UILabel = {
-       let label = UILabel()
-       label.text = "Memory Cards"
-       return label
+        let label = UILabel()
+        label.text = "Memory Cards"
+        label.font = UIFont(name: "Luminari-Regular", size: 45)
+        return label
     }()
     
-    let nameField: UITextField = {
-       let tF = UITextField()
-       tF.placeholder = "Enter your name"
-       return tF
+    var nameField: UITextField = {
+        var tF = UITextField()
+        tF.placeholder = "Enter your name"
+        tF.font = UIFont(name: "Luminari-Regular", size: 35)
+        tF.textAlignment = .center
+        return tF
     }()
     
     let startBtn: UIButton = {
@@ -19,14 +22,18 @@ class HomeStackView: UIStackView {
         btn.isUserInteractionEnabled = true
         btn.tag = 0
         btn.setTitle("START", for: .normal)
+        btn.titleLabel?.font =  UIFont(name:"Luminari-Regular", size: 20)
+        btn.tintColor = .black
         return btn
     }()
-
+    
     let scoreBtn: UIButton = {
         let btn = UIButton(type: .system)
         btn.isUserInteractionEnabled = true
         btn.tag = 1
-        btn.setTitle("Scores", for: .normal)
+        btn.setTitle("SCORES", for: .normal)
+        btn.titleLabel?.font =  UIFont(name:"Luminari-Regular", size: 20)
+        btn.tintColor = .black
         return btn
     }()
     
@@ -42,7 +49,7 @@ class HomeStackView: UIStackView {
     func setView() {
         self.axis = .vertical
         self.distribution = .equalSpacing
-        self.spacing = 20
+        self.spacing = 40
         self.alignment = .center
         self.addArrangedSubview(titleLabel)
         self.addArrangedSubview(nameField)
