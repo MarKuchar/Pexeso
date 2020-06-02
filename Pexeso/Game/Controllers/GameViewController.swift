@@ -7,31 +7,7 @@
 
 import UIKit
 
-class GameViewController: UIViewController, FlipCardDelegate {
-    
-    @objc func cardTapped(_ sender: UIButton) {
-//       switch sender.tag {
-//           case 0:
-//               sender.setImage(UIImage(named: "Card_00"), for: .normal)
-//           case 1:
-//               sender.setImage(UIImage(named: "Card_01"), for: .normal)
-//           case 2:
-//               sender.setImage(UIImage(named: "Card_02"), for: .normal)
-//           case 3:
-//               sender.setImage(UIImage(named: "Card_03"), for: .normal)
-//           case 4:
-//               sender.setImage(UIImage(named: "Card_04"), for: .normal)
-//           case 5:
-//               sender.setImage(UIImage(named: "Card_05"), for: .normal)
-//           case 6:
-//               sender.setImage(UIImage(named: "Card_06"), for: .normal)
-//           case 7:
-//               sender.setImage(UIImage(named: "Card_07"), for: .normal)
-//           default:
-//               sender.setImage(UIImage(named: "Card_08"), for: .normal)
-//       }
-    
-    }
+class GameViewController: UIViewController {
     
     let cardLayout = CardLayoutStackView()
     let homeController = HomeViewController()
@@ -92,8 +68,8 @@ class GameViewController: UIViewController, FlipCardDelegate {
     
     let timerImageView: UIImageView = {
            let imageView = UIImageView(image: UIImage(named: "TimeLabel"))
-            imageView.constraintHeight(equalToConstant: 90)
-            imageView.constraintWidth(equalToConstant: 390)
+            imageView.constraintHeight(equalToConstant: 80)
+            imageView.constraintWidth(equalToConstant: 345)
             imageView.contentMode = .scaleAspectFit
             imageView.clipsToBounds = true
             return imageView
@@ -163,7 +139,8 @@ class GameViewController: UIViewController, FlipCardDelegate {
         
         NSLayoutConstraint.activate([
             timerImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-            timerImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 70)])
+            timerImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
+            timerImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15)])
     }
 //    timer
     @objc func runTimer(){
