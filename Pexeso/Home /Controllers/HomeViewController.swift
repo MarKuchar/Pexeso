@@ -1,8 +1,7 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    var scoreList: ScoreList? = nil
-        
+    var name: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -12,8 +11,6 @@ class HomeViewController: UIViewController {
         
         homeView.startBtn.addTarget(self, action: #selector(performSegue(_:)), for: .touchUpInside)
         homeView.scoreBtn.addTarget(self, action: #selector(performSegue(_:)), for: .touchUpInside)
-        
-        scoreList = ScoreList.instance
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -24,11 +21,11 @@ class HomeViewController: UIViewController {
         switch sender.tag {
             case 0:
                 let gameController = GameViewController()
+                gameController.game = Game(name: name)
                 self.navigationController?.pushViewController(gameController, animated: true)
             default:
                 let scoreController = ScoreViewController()
                 let navController = CustomNavigationController(rootViewController: scoreController)
-                navController.navigationItem.title = "Scores"             
                 present(navController, animated: true, completion: nil)
         }
     }

@@ -7,6 +7,7 @@ protocol FlipCardDelegate: class {
 class CardLayoutStackView: UIStackView {
     
     weak var delegate: FlipCardDelegate?
+    var controller: GameViewController?
     
     var arrayOfCards = Deck()
     
@@ -46,6 +47,7 @@ class CardLayoutStackView: UIStackView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setView()
     }
     
@@ -151,11 +153,17 @@ class CardLayoutStackView: UIStackView {
                 self.flippedCards[0].alpha = 0
                 self.flippedCards[1].alpha = 0
             }
-            
+            if let c = controller {
+                c.game!.match()
+            }
         } else {
             
             self.flippedCards[0].setImage(UIImage(named: "Card_Back"), for: .normal)
             self.flippedCards[1].setImage(UIImage(named: "Card_Back"), for: .normal)
+            if let c = controller {
+                c.game!.miss()
+                c.mistakeLabel.text = "Mistakes: " + String(c.game!.missCount)
+            }
         }
         flippedCards.removeAll(keepingCapacity: true)
     }
