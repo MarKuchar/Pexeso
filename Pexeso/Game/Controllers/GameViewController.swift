@@ -18,15 +18,13 @@ class GameViewController: UIViewController, FlipCardDelegate {
     var counter = 0
     var seconds = 0
     var minutes = 0
-    //timer
-    var userName : String = ""
     var timeText : String = ""
+    //timer
     
     var notificationWidthConstraint: NSLayoutConstraint!
     
     let timerLabel: UILabel = {
         let label = UILabel()
-        label.constraintWidth(equalToConstant: 100)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "Luminari-Regular", size: 30)
         return label
@@ -129,7 +127,7 @@ class GameViewController: UIViewController, FlipCardDelegate {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
-        homeController.homeView.nameField.text = userName
+        homeController.homeView.nameField.text = game!.name
         
         // init label
         scoreLabel.text = "Score: " + String(game!.matchCount)
@@ -200,7 +198,7 @@ class GameViewController: UIViewController, FlipCardDelegate {
         
         game!.setRemain(time: counter)
         timeText = String(format: "%02d:%02d", minutes, seconds)
-        timerLabel.text = "\(userName)\(timeText)"
+        timerLabel.text = "\(game!.name) \(timeText)"
     }
     
     func notification(_ type: String) {
