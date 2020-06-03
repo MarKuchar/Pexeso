@@ -21,7 +21,8 @@ class HomeViewController: UIViewController {
         registerForKayboardNotification()
         homeView.startBtn.addTarget(self, action: #selector(performSegue(_:)), for: .touchUpInside)
         homeView.scoreBtn.addTarget(self, action: #selector(performSegue(_:)), for: .touchUpInside)
-            
+        ScoreList.instance
+
     }
     private func registerForKayboardNotification (){
          NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
@@ -57,7 +58,7 @@ class HomeViewController: UIViewController {
             
             if let userName = homeView.nameField.text, userName != "" {
                 gameController.game = Game(name: userName)
-            }else {
+            } else {
                 print("Name is empty")
             }
             
