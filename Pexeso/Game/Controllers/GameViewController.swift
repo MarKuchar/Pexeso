@@ -18,13 +18,11 @@ class GameViewController: UIViewController {
     var counter = 0
     var seconds = 0
     var minutes = 0
-    //timer
-    var userName : String = ""
     var timeText : String = ""
+    //timer
     
     let timerLabel: UILabel = {
         let label = UILabel()
-        label.constraintWidth(equalToConstant: 100)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "Luminari-Regular", size: 30)
         return label
@@ -109,7 +107,7 @@ class GameViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
-        homeController.homeView.nameField.text = userName
+        homeController.homeView.nameField.text = game!.name
         
         //        timer
         if !isTimerRunning{
@@ -152,6 +150,6 @@ class GameViewController: UIViewController {
         seconds = counter % 60
         minutes = counter / 60
         timeText = String(format: "%02d:%02d", minutes, seconds)
-        timerLabel.text = "\(userName)\(timeText)"
+        timerLabel.text = "\(game!.name) \(timeText)"
     }
 }
