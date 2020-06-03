@@ -5,7 +5,10 @@ class HomeViewController: UIViewController {
     
     let homeView = HomeStackView()
     let userName : String = ""
-    var scrollView : UIScrollView!
+    var scrollView: UIScrollView = {
+       let sV = UIScrollView()
+        return  sV
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,12 +20,12 @@ class HomeViewController: UIViewController {
         self.view.insertSubview(backgroundImage, at: 0)
         
         view.addSubview(homeView)
+        view.addSubview(scrollView)
         homeView.centerXYin(view)
         registerForKayboardNotification()
         homeView.startBtn.addTarget(self, action: #selector(performSegue(_:)), for: .touchUpInside)
         homeView.scoreBtn.addTarget(self, action: #selector(performSegue(_:)), for: .touchUpInside)
         ScoreList.instance
-
     }
     private func registerForKayboardNotification (){
          NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
@@ -35,7 +38,6 @@ class HomeViewController: UIViewController {
          let keyboardHeight  = keyboardFrame.cgRectValue.size.height
          let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
         
-     
          scrollView.contentInset = contentInsets
          scrollView.scrollIndicatorInsets = contentInsets
      }

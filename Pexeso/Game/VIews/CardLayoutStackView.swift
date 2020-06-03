@@ -59,7 +59,8 @@ class CardLayoutStackView: UIStackView {
         arrayOfCards.deck.shuffle()
         
         for index in 0...3 {
-            let btn = UIButton()
+            let btn = UIButton(type: .custom)
+//            btn.adjustsImageWhenHighlighted = true
             btn.setImage(UIImage(named: "Card_Back"), for: .normal)
             btn.tag = arrayOfCards.deck[index].kind.rawValue
             btn.addTarget(self, action: #selector(cardTapped(_:)), for: .touchUpInside)
@@ -69,7 +70,8 @@ class CardLayoutStackView: UIStackView {
         }
         
         for index in 4...7 {
-            let btn = UIButton()
+            let btn = UIButton(type: .custom)
+//            btn.adjustsImageWhenHighlighted = true
             btn.setImage(UIImage(named: "Card_Back"), for: .normal)
             btn.tag = arrayOfCards.deck[index].kind.rawValue
             btn.addTarget(self, action: #selector(cardTapped(_:)), for: .touchUpInside)
@@ -79,7 +81,8 @@ class CardLayoutStackView: UIStackView {
         }
         
         for index in 8...11 {
-            let btn = UIButton()
+            let btn = UIButton(type: .custom)
+//            btn.adjustsImageWhenHighlighted = true
             btn.setImage(UIImage(named: "Card_Back"), for: .normal)
             btn.tag = arrayOfCards.deck[index].kind.rawValue
             btn.addTarget(self, action: #selector(cardTapped(_:)), for: .touchUpInside)
@@ -89,7 +92,8 @@ class CardLayoutStackView: UIStackView {
         }
         
         for index in 12...15 {
-            let btn = UIButton()
+            let btn = UIButton(type: .custom)
+//            btn.adjustsImageWhenHighlighted = true
             btn.setImage(UIImage(named: "Card_Back"), for: .normal)
             btn.tag = arrayOfCards.deck[index].kind.rawValue
             btn.addTarget(self, action: #selector(cardTapped(_:)), for: .touchUpInside)
@@ -113,27 +117,35 @@ class CardLayoutStackView: UIStackView {
         case 0:
             flip(sender, image: "Card_00")
             flippedCards.append(sender)
+            sender.isUserInteractionEnabled = false
         case 1:
             flip(sender, image: "Card_01")
             flippedCards.append(sender)
+            sender.isUserInteractionEnabled = false
         case 2:
             flip(sender, image: "Card_02")
             flippedCards.append(sender)
+            sender.isUserInteractionEnabled = false
         case 3:
             flip(sender, image: "Card_03")
             flippedCards.append(sender)
+            sender.isUserInteractionEnabled = false
         case 4:
             flip(sender, image: "Card_04")
             flippedCards.append(sender)
+            sender.isUserInteractionEnabled = false
         case 5:
             flip(sender, image: "Card_05")
             flippedCards.append(sender)
+            sender.isUserInteractionEnabled = false
         case 6:
             flip(sender, image: "Card_06")
             flippedCards.append(sender)
+            sender.isUserInteractionEnabled = false
         default:
             flip(sender, image: "Card_07")
             flippedCards.append(sender)
+            sender.isUserInteractionEnabled = false
         }
         print(arrayOfCards.deck)
         if ( flippedCards.count >= 2 && flippedCards.count % 2 == 0) {
@@ -157,7 +169,6 @@ class CardLayoutStackView: UIStackView {
                     previous.alpha = 0
                     current.alpha = 0
                 })
-                
                 }
             )
             controller!.game!.match()
@@ -168,6 +179,8 @@ class CardLayoutStackView: UIStackView {
             }
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                previous.isUserInteractionEnabled = true
+                current.isUserInteractionEnabled = true
                 self.flip(previous, image: "Card_Back")
                 self.flip(current, image: "Card_Back")
             }
