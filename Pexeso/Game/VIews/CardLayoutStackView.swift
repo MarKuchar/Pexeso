@@ -60,7 +60,6 @@ class CardLayoutStackView: UIStackView {
         
         for index in 0...3 {
             let btn = UIButton(type: .custom)
-//            btn.adjustsImageWhenHighlighted = true
             btn.setImage(UIImage(named: "Card_Back"), for: .normal)
             btn.tag = arrayOfCards.deck[index].kind.rawValue
             btn.addTarget(self, action: #selector(cardTapped(_:)), for: .touchUpInside)
@@ -71,7 +70,6 @@ class CardLayoutStackView: UIStackView {
         
         for index in 4...7 {
             let btn = UIButton(type: .custom)
-//            btn.adjustsImageWhenHighlighted = true
             btn.setImage(UIImage(named: "Card_Back"), for: .normal)
             btn.tag = arrayOfCards.deck[index].kind.rawValue
             btn.addTarget(self, action: #selector(cardTapped(_:)), for: .touchUpInside)
@@ -82,7 +80,6 @@ class CardLayoutStackView: UIStackView {
         
         for index in 8...11 {
             let btn = UIButton(type: .custom)
-//            btn.adjustsImageWhenHighlighted = true
             btn.setImage(UIImage(named: "Card_Back"), for: .normal)
             btn.tag = arrayOfCards.deck[index].kind.rawValue
             btn.addTarget(self, action: #selector(cardTapped(_:)), for: .touchUpInside)
@@ -93,7 +90,6 @@ class CardLayoutStackView: UIStackView {
         
         for index in 12...15 {
             let btn = UIButton(type: .custom)
-//            btn.adjustsImageWhenHighlighted = true
             btn.setImage(UIImage(named: "Card_Back"), for: .normal)
             btn.tag = arrayOfCards.deck[index].kind.rawValue
             btn.addTarget(self, action: #selector(cardTapped(_:)), for: .touchUpInside)
