@@ -17,15 +17,22 @@ class HomeViewController: UIViewController {
         backgroundImage.image = UIImage(named: "Table_01.jpg")
         backgroundImage.autoresizingMask = [UIView.AutoresizingMask.flexibleBottomMargin, UIView.AutoresizingMask.flexibleHeight, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin]
         backgroundImage.contentMode = UIView.ContentMode.scaleToFill
-        self.view.insertSubview(backgroundImage, at: 0)
+        view.insertSubview(backgroundImage, at: 0)
         
         view.addSubview(homeView)
         view.addSubview(scrollView)
         homeView.centerXYin(view)
+        
+        scrollView = UIScrollView(frame: self.view.frame)
+        view.addSubview(scrollView!)
+        scrollView.addSubview(homeView)
+        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 700)
         registerForKayboardNotification()
+        
         homeView.startBtn.addTarget(self, action: #selector(performSegue(_:)), for: .touchUpInside)
         homeView.scoreBtn.addTarget(self, action: #selector(performSegue(_:)), for: .touchUpInside)
         ScoreList.instance
+
     }
     private func registerForKayboardNotification (){
          NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
@@ -34,7 +41,8 @@ class HomeViewController: UIViewController {
      
      @objc func keyboardWasShown(_ notification: Notification){
          guard let info = notification.userInfo, let keyboardFrame = info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue else {return}
-         
+        
+
          let keyboardHeight  = keyboardFrame.cgRectValue.size.height
          let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
         
