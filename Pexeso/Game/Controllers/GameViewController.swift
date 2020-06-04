@@ -186,13 +186,15 @@ class GameViewController: UIViewController, FlipCardDelegate {
     
     @objc func runTimer(){
         if (game!.isFinished()) {
-            game?.finish()
-            updateLabel()
-            if game!.isTimeUp() {
-                notification("TimeUp")
-            }
             isTimerRunning = false
             timer.invalidate()
+
+            if game!.isTimeUp() {
+                notification("TimeUp")
+            } else {
+                game?.finish()
+            }
+            updateLabel()
             return
         }
         counter += 1
