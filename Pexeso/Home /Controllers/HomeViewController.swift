@@ -24,7 +24,7 @@ class HomeViewController: UIViewController {
         homeView.centerXYin(view)
         
         scrollView = UIScrollView(frame: self.view.frame)
-        view.addSubview(scrollView!)
+        view.addSubview(scrollView)
         scrollView.addSubview(homeView)
         scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 700)
         registerForKayboardNotification()
