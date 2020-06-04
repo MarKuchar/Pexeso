@@ -61,7 +61,7 @@ class HomeViewController: UIViewController {
             if let userName = homeView.nameField.text, userName != "" {
                 gameController.game = Game(name: userName)
             } else {
-                print("Name is empty")
+                return
             }
             
             self.navigationController?.pushViewController(gameController, animated: true)
