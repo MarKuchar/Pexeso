@@ -235,17 +235,17 @@ class GameViewController: UIViewController, FlipCardDelegate {
                     self.notificationImageView.alpha = 1
                })
             default:
-                UIView.animate(withDuration: 6, delay: 3,animations: {
+                UIView.animate(withDuration: 2, delay: 3,animations: {
                     self.notificationLabel.text = "MATCH"
                     self.notificationImageView.alpha = 1
                 }, completion: ((Bool) -> Void)? { _ in
-                    UIView.animate(withDuration: 4, animations: {
+                    NSLayoutConstraint.deactivate([
+                        self.notificationWidthConstraint])
+                    NSLayoutConstraint.activate([
+                        self.notificationImageView.widthAnchor.constraint(equalToConstant: 380)])
+                        self.notificationLabel.text = "Total score: \(self.game!.value)"
+                    UIView.animate(withDuration: 3, animations: {
                         self.view.layoutIfNeeded()
-                        NSLayoutConstraint.deactivate([
-                            self.notificationWidthConstraint])
-                        NSLayoutConstraint.activate([
-                            self.notificationImageView.widthAnchor.constraint(equalToConstant: 360)])
-                            self.notificationLabel.text = "Total score: \(self.game!.value)"
                     })
                 })
         }
