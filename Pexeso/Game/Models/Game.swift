@@ -45,10 +45,13 @@ class Game {
     }
     
     func isFinished() -> Bool {
-        if (remain <= 0) {
+        if (isTimeUp()) {
             return true
         }
         return matchCount >= (cardCount / 2)
+    }
+    func isTimeUp() -> Bool {
+        return remain <= 0
     }
     
     private func calcScore() {

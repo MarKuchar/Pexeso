@@ -188,6 +188,9 @@ class GameViewController: UIViewController, FlipCardDelegate {
         if (game!.isFinished()) {
             game?.finish()
             updateLabel()
+            if game!.isTimeUp() {
+                notification("TimeUp")
+            }
             isTimerRunning = false
             timer.invalidate()
             return
@@ -226,6 +229,11 @@ class GameViewController: UIViewController, FlipCardDelegate {
                             self.notificationImageView.alpha = 0
                         })
                     })
+            case "TimeUp":
+               UIView.animate(withDuration: 1, animations: {
+                    self.notificationLabel.text = "Time Up"
+                    self.notificationImageView.alpha = 1
+               })
             default:
                 UIView.animate(withDuration: 6, delay: 3,animations: {
                     self.notificationLabel.text = "MATCH"
