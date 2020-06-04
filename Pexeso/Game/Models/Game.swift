@@ -6,7 +6,7 @@
 //
 
 import Foundation
-let TIME_LIMIT = 3000
+let TIME_LIMIT = 300
 
 class Game {
     var name: String
@@ -61,11 +61,11 @@ class Game {
     }
     
     private func calcBonus() {
-        if remain >= 1800 {
+        if remain >= 240 {
             value += 100
             return
         }
-        if remain >= 600 {
+        if remain >= 120 {
             value += 50
             return
         }
