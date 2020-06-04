@@ -109,6 +109,9 @@ class CardLayoutStackView: UIStackView {
     }
     
     @objc func cardTapped(_ sender: UIButton) {
+        if controller!.game!.isFinished() {
+           return
+        }
         switch sender.tag {
         case 0:
             flip(sender, image: "Card_00")
